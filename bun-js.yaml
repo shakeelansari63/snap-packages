@@ -7,7 +7,7 @@ description: |
 
 base: core22
 grade: stable
-confinement: strict
+confinement: classic
 
 parts:
   bunjs:
@@ -21,21 +21,11 @@ parts:
       curl https://bun.sh/install > install.sh
       chmod +x install.sh
       ./install.sh
-      pwd
-      tree .
-    organize:
-      /root/.bun: _bun
+      pwd 
+      tree /root
 
 apps:
   bun:
-    command: _bun/bin/bun
-    plugs:
-      - network
-      - network-bind
-      - home
+    command: .bun/bin/bun
   bunx:
-    command: _bun/bin/bunx
-    plugs:
-      - network
-      - network-bind
-      - home
+    command: .bun/bin/bun
