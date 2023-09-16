@@ -22,10 +22,10 @@ parts:
       chmod +x install.sh
       ./install.sh
       pwd 
-      tree /root
+      tree /root/.bun
 
 apps:
   bun:
-    command: .bun/bin/bun
+    command: /root/.bun/bin/bun
   bunx:
-    command: .bun/bin/bun
+    command: /root/.bun/bin/bun
