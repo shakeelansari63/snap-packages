@@ -1,5 +1,8 @@
 name: bun-js
-version: bun-v1.0.0
+version: bun-v1.0.2
+license: MIT
+contact: https://github.com/shakeelansari63/snap-packages
+website: https://bun.sh/
 summary: Bun
 description: |
   Develop, test, run, and bundle JavaScript & TypeScript projects—all with Bun.
