@@ -33,4 +33,9 @@ apps:
       - network
       - network-bind
       - home
-      
+  bunx:
+    command: _bun/bin/bunx
+    plugs:
+      - network
+      - network-bind
+      - home
