@@ -28,7 +28,7 @@ parts:
 
 apps:
   bun:
-    command: _bun/bin/bu
+    command: _bun/bin/bun
     plugs:
       - network
       - network-bind
