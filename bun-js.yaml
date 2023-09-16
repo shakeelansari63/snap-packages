@@ -21,11 +21,13 @@ parts:
       curl https://bun.sh/install > install.sh
       chmod +x install.sh
       ./install.sh
-      pwd 
+      rm -f /root/.bun/bin/bunx
       tree /root/.bun
+    organize:
+      /root/.bun: _bun
 
 apps:
   bun:
-    command: /root/.bun/bin/bun
+    command: _bun/.bun/bin/bun
   bunx:
-    command: /root/.bun/bin/bun
+    command: _bun/.bun/bin/bun
