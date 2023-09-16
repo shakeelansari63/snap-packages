@@ -7,7 +7,7 @@ description: |
 
 base: core22
 grade: stable
-confinement: classic
+confinement: strict
 
 parts:
   bunjs:
@@ -28,6 +28,14 @@ parts:
 
 apps:
   bun:
-    command: _bun/bin/bun
+    command: _bun/bin/bu
+    plugs:
+      - network
+      - network-bind
+      - home
   bunx:
     command: _bun/bin/bun
+    plugs:
+      - network
+      - network-bind
+      - home
