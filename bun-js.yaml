@@ -33,3 +33,4 @@ apps:
       - network
       - network-bind
       - home
+      
