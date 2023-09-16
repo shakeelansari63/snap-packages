@@ -1,0 +1,29 @@
+name: Update Bun Js on Snapcraft
+on:
+  push:
+    branches: 
+      - 'main'
+    paths: 
+      - bun-js.yaml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # Checkout Branch
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Rename Bunjs to Snapcraft.yaml
+        run: mv bun-js.yaml snapcraft.yaml
+
+      - name: Build snap
+        uses: snapcore/action-build@v1
+        id: build
+
+      - name: Release snap
+        uses: snapcore/action-publish@v1
+        with:
+          store_login: ${{ secrets.BUN_JS_SNAP_STORE_LOGIN }}
+          snap: ${{ steps.build.outputs.snap }}
+          release: stable

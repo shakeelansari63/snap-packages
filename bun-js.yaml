@@ -1,0 +1,35 @@
+name: bun-js
+version: bun-v1.0.0
+summary: Bun
+description: |
+  Develop, test, run, and bundle JavaScript & TypeScript projects—all with Bun.
+  Bun is an all-in-one JavaScript runtime & toolkit designed for speed, complete with a bundler, test runner, and Node.js-compatible package manager.
+
+base: core22
+grade: stable
+confinement: strict
+
+parts:
+  bunjs:
+    plugin: dump
+    build-packages:
+      - unzip
+      - curl
+      - tree
+    source: .
+    override-build: |
+      curl https://bun.sh/install > install.sh
+      chmod +x install.sh
+      ./install.sh
+      pwd
+      tree .
+    organize:
+      /root/.bun: _bun
+
+apps:
+  bun:
+    command: _bun/bin/bun
+    plugs:
+      - network
+      - network-bind
+      - home
