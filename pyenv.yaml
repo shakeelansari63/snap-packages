@@ -1,5 +1,5 @@
 name: pyenv
-version: "2.3.29-beta1"
+version: "2.3.29-beta2"
 license: MIT
 contact: https://github.com/shakeelansari63/snap-packages
 website: https://github.com/pyenv/pyenv
@@ -16,6 +16,9 @@ parts:
   variety:
     plugin: dump
     build-packages:
+      - curl
+      - tree
+    stage-packages:
       - build-essential
       - libssl-dev
       - zlib1g-dev
@@ -32,7 +35,6 @@ parts:
       - liblzma-dev
       - git
       - llvm
-      - tree
     source: .
     override-build: |
       curl https://pyenv.run | bash
