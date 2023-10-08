@@ -58,5 +58,6 @@ apps:
       - home
 
 layout:
-  /etc/gitconfig: $SNAP/_pyenv/gitconfig
+  /etc/gitconfig: 
+    bind-file: $SNAP/_pyenv/gitconfig
 
