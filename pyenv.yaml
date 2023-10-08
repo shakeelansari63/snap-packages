@@ -7,7 +7,8 @@ summary: Simple Python Version Management
 description: |
   pyenv lets you easily switch between multiple versions of Python. 
   It's simple, unobtrusive, and follows the UNIX tradition of single-purpose tools that do one thing well.
-
+architectures:
+  - amd64
 base: core22
 grade: devel
 confinement: strict
@@ -18,6 +19,7 @@ parts:
     build-packages:
       - curl
       - tree
+      - git
     stage-packages:
       - build-essential
       - libssl-dev
@@ -38,6 +40,10 @@ parts:
     source: .
     override-build: |
       curl https://pyenv.run | bash
+      echo """
+      [safe]
+        directory = *
+      """ > /root/.gitconfig
       tree /root/.pyenv
 
     organize:
