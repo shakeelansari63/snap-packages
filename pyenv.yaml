@@ -30,6 +30,7 @@ parts:
       - libxmlsec1-dev
       - libffi-dev
       - liblzma-dev
+      - git
       - llvm
       - tree
     source: .
