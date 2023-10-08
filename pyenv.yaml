@@ -1,0 +1,49 @@
+name: pyenv
+version: "2.3.29-betaq"
+license: MIT
+contact: https://github.com/shakeelansari63/snap-packages
+website: https://github.com/pyenv/pyenv
+summary: Simple Python Version Management
+description: |
+  pyenv lets you easily switch between multiple versions of Python. 
+  It's simple, unobtrusive, and follows the UNIX tradition of single-purpose tools that do one thing well.
+
+base: core22
+grade: edge
+confinement: strict
+
+parts:
+  variety:
+    plugin: dump
+    build-packages:
+      - build-essential
+      - libssl-dev
+      - zlib1g-dev
+      - libbz2-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - curl
+      - libncursesw5-dev
+      - xz-utils
+      - tk-dev
+      - libxml2-dev
+      - libxmlsec1-dev
+      - libffi-dev
+      - liblzma-dev
+      - llvm
+      - tree
+    source: .
+    override-build: |
+      curl https://pyenv.run | bash
+      tree /root/.pyenv
+
+    organize:
+      /root/.pyenv: _pyenv
+
+apps:
+  pyenv:
+    command: _pyenv/bin/pyenv
+    plugs:
+      - network
+      - network-bind
+      - home
