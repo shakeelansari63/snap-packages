@@ -9,7 +9,7 @@ description: |
   It's simple, unobtrusive, and follows the UNIX tradition of single-purpose tools that do one thing well.
 
 base: core22
-grade: edge
+grade: devel
 confinement: strict
 
 parts:

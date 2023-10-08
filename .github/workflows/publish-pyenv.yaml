@@ -1,4 +1,4 @@
-name: Update Variety on Snapcraft
+name: Update PyEnv on Snapcraft
 on:
   push:
     branches: 
