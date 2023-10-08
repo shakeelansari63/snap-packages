@@ -1,5 +1,5 @@
 name: pyenv
-version: "2.3.29-beta5"
+version: "2.3.29-beta6"
 license: MIT
 contact: https://github.com/shakeelansari63/snap-packages
 website: https://github.com/pyenv/pyenv
@@ -40,10 +40,9 @@ parts:
     source: .
     override-build: |
       curl https://pyenv.run | bash
-      echo """
-      [safe]
+      echo """[safe]
         directory = *
-      """ > /root/.pyenv/gitconfig
+      """ > /etc/gitconfig
       tree /root/.pyenv
 
     organize:
@@ -59,5 +58,5 @@ apps:
 
 layout:
   /etc/gitconfig: 
-    bind-file: $SNAP/_pyenv/gitconfig
+    bind-file: $SNAP/etc/gitconfig
 
