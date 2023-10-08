@@ -48,6 +48,7 @@ parts:
 
     organize:
       /root/.pyenv: _pyenv
+      /root/.gitconfig: .gitconfig
 
 apps:
   pyenv:

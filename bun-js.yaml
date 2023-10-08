@@ -4,6 +4,8 @@ license: MIT
 contact: https://github.com/shakeelansari63/snap-packages
 website: https://bun.sh/
 summary: Bun
+architectures:
+  - amd64
 description: |
   Develop, test, run, and bundle JavaScript & TypeScript projects—all with Bun.
   Bun is an all-in-one JavaScript runtime & toolkit designed for speed, complete with a bundler, test runner, and Node.js-compatible package manager.
