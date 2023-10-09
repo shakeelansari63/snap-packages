@@ -21,7 +21,7 @@ parts:
       - curl
       - wget 
       - python3
-      - python-distutils-extra
+      - distutils-extra
       - git
       - tree
     source: .
@@ -32,7 +32,7 @@ parts:
       python3 setup.py install --prefix /root/.local
     stage-packages:
       - python3
-      - python-distutils-extra
+      - distutils-extra
       - git
     organize:
       /root/.local/: _variety
