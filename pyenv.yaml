@@ -27,6 +27,7 @@ parts:
       - libbz2-dev
       - libreadline-dev
       - libsqlite3-dev
+      - libdigest-sha-perl
       - curl
       - libncursesw5-dev
       - xz-utils
