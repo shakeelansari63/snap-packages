@@ -21,16 +21,7 @@ parts:
       - tar
       - wget 
       - python3
-      - python3-setuptools
-      - python3-bs4
-      - python3-lxml
-      - python3-cairocffi
-      - python3-gi-cairo
-      - python3-gi
-      - python3-configobj
-      - python3-pil
-      - python3-requests
-      - python3-httplib2
+      - python3-pip
       - git
       - tree
     source: .
@@ -44,19 +35,12 @@ parts:
       unzip variety.zip
       cd variety-0.8.10/
 
+      pip3 install -r requirememts.txt --user
+
       python3 setup.py install --prefix /root/.local
 
     stage-packages:
       - python3
-      - python3-bs4
-      - python3-lxml
-      - python3-cairocffi
-      - python3-gi-cairo
-      - python3-gi
-      - python3-configobj
-      - python3-pil
-      - python3-requests
-      - python3-httplib2
     organize:
       /root/.local/: _variety
 
