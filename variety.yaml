@@ -18,22 +18,26 @@ parts:
     plugin: dump
     build-packages:
       - unzip
-      - curl
+      - tar
       - wget 
       - python3
-      - distutils-extra
       - git
       - tree
     source: .
     override-build: |
+      wget https://launchpad.net/python-distutils-extra/trunk/2.39/+download/python-distutils-extra-2.39.tar.gz -O python-distutils-extra.tar.gz
+      tar -xf python-distutils-extra.tar.gz
+      cd python-distutils-extra-2.39
+      python setup.py install
+
       wget https://github.com/varietywalls/variety/archive/refs/tags/0.8.10.zip -O variety.zip
       unzip variety.zip
       cd variety-0.8.10/
+
       python3 setup.py install --prefix /root/.local
+      
     stage-packages:
       - python3
-      - distutils-extra
-      - git
     organize:
       /root/.local/: _variety
 
