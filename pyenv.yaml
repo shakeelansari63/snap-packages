@@ -38,6 +38,7 @@ parts:
       - libffi-dev
       - liblzma-dev
       - git
+      - gcc
       - llvm
     source: .
     override-build: |
