@@ -35,7 +35,7 @@ parts:
       unzip variety.zip
       cd variety-0.8.10/
 
-      pip3 install -r requirememts.txt --user
+      pip3 install -r ./requirements.txt --user
 
       python3 setup.py install --prefix /root/.local
 
