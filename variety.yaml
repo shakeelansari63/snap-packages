@@ -10,35 +10,36 @@ description: |
   Variety can also display wise and funny quotations or a nice digital clock on the desktop.
 
 base: core22
-grade: devel
+grade: edge
 confinement: strict
-
-package-repositories:
- - type: apt
-   ppa: variety/stable
 
 parts:
   variety:
     plugin: dump
+    build-packages:
+      - unzip
+      - curl
+      - wget 
+      - python3
+      - python-distutils-extra
+      - git
+      - tree
     source: .
+    override-build: |
+      wget https://github.com/varietywalls/variety/archive/refs/tags/0.8.10.zip -O variety.zip
+      unzip variety.zip
+      cd variety-0.8.10/
+      python3 setup.py install --prefix /root/.local
     stage-packages:
-      - variety
-      - variety-slideshow
-    # organize:
-    #   /root/.bun: _bun
+      - python3
+      - python-distutils-extra
+      - git
+    organize:
+      /root/.local/: _variety
 
 apps:
   variety:
-    command: /usr/bin/variety
-    desktop: /usr/share/applications/variety.desktop
-    plugs:
-      - network
-      - network-bind
-      - home
-
-  variety-slideshow:
-    command: /usr/bin/variety-slideshow
-    desktop: /usr/share/applications/variety-slideshow.desktop
+    command: _variety/bin/variety
     plugs:
       - network
       - network-bind
