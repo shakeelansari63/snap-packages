@@ -19,7 +19,6 @@ package-repositories:
 
 parts:
   variety:
-    plugin: dump
     stage-packages:
       - variety
       - variety-slideshow
