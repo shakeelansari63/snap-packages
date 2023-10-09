@@ -1,0 +1,44 @@
+name: varietywalls
+version: "0.8.10"
+license: GPLv3
+contact: https://github.com/shakeelansari63/snap-packages
+website: http://peterlevi.com/variety
+summary: Variety is an open-source wallpaper changer for Linux
+description: |
+  Variety is packed with great features, yet slim and easy to use. 
+  It can use local images or automatically download wallpapers from Unsplash and other online sources, allows you to rotate them on a regular interval, and provides easy ways to separate the great images from the junk. 
+  Variety can also display wise and funny quotations or a nice digital clock on the desktop.
+
+base: core22
+grade: devel
+confinement: strict
+
+package-repositories:
+ - type: apt
+   ppa: variety/stable
+
+parts:
+  variety:
+    plugin: dump
+    stage-packages:
+      - variety
+      - variety-slideshow
+    # organize:
+    #   /root/.bun: _bun
+
+apps:
+  variety:
+    command: /usr/bin/variety
+    desktop: /usr/share/applications/variety.desktop
+    plugs:
+      - network
+      - network-bind
+      - home
+
+  variety-slideshow:
+    command: /usr/bin/variety-slideshow
+    desktop: /usr/share/applications/variety-slideshow.desktop
+    plugs:
+      - network
+      - network-bind
+      - home
