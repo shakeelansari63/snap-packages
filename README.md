@@ -1,5 +1,7 @@
-# Build Multiple Snap Packages
+# Build multiple Snap packages
 
-## My Snaps here -
+## My Snaps here
 
--   bun
+- [bun](https://bun.sh/)
+- [pyenv](https://github.com/pyenv/pyenv)
+- [variety](https://peterlevi.com/variety/)
