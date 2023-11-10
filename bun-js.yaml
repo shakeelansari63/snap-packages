@@ -2,6 +2,8 @@ name: bun-js
 version: "1.0.11"
 license: MIT
 contact: https://github.com/shakeelansari63/snap-packages
+issues: https://github.com/oven-sh/bun/issues
+source-code: https://github.com/oven-sh/bun
 website: https://bun.sh/
 summary: Bun
 architectures:
