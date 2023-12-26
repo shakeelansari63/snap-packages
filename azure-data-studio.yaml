@@ -15,7 +15,7 @@ grade: devel
 confinement: strict
 
 parts:
-  bunjs:
+  azuredatastudio:
     plugin: dump
     build-packages:
       - unzip
@@ -31,15 +31,15 @@ parts:
       tree /root/azure_data_studio
 
       # Copy Gui Files
-      cp static/azure-data-studio.png snap/gui/
-      cp static/azure.data.studio.desktop snap/gui/
+      cp static/azure-data-studio.png /root/azure_data_studio/
+      cp static/azure.data.studio.desktop /root/azure_data_studio/
     organize:
       /root/azure_data_studio: _ads
 
 apps:
   azuredatastudio:
     command: desktop-launch _ads/bin/azuredatastudio
-    desktop: ${SNAP}/meta/gui/azure.data.studio.desktop
+    desktop: _ads/azure.data.studio.desktop
     plugs:
       - desktop
       - desktop-legacy
