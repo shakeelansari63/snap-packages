@@ -31,7 +31,7 @@ parts:
       - libxext6
       - libxft2
       - libxrender1
-      - libxss1
+      - libxss1 
     override-build: |
       curl -L https://azuredatastudio-update.azurewebsites.net/latest/linux-x64/stable -o ads.tgz
       tar -xf ads.tgz
@@ -43,7 +43,7 @@ parts:
 apps:
   azuredatastudio:
     command: desktop-launch _ads/bin/azuredatastudio
-    desktop: ${SNAP}/meta/gui/azure.data.studio.desktop
+    desktop: $SNAP/meta/gui/azure.data.studio.desktop
     plugs:
       - desktop
       - desktop-legacy
