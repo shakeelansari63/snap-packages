@@ -1,0 +1,31 @@
+name: Update Azure Data Studio on Snapcraft
+on:
+  push:
+    branches: 
+      - 'main'
+    paths: 
+      - azure-data-studio.yaml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # Checkout Branch
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Rename AzureDataStudio to Snapcraft.yaml
+        run: mv azure-data-studio.yaml snapcraft.yaml
+
+      - name: Build snap
+        uses: snapcore/action-build@v1
+        id: build
+
+      - name: Release snap
+        uses: snapcore/action-publish@v1
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_SNAP_STORE_LOGIN }}
+        with:
+          snap: ${{ steps.build.outputs.snap }}
+          release: edge
+        
