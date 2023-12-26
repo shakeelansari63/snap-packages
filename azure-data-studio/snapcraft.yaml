@@ -28,22 +28,22 @@ parts:
       - libxcomposite-dev
       - libxdamage1
       - libxrandr2
+      - libxext6
+      - libxft2
+      - libxrender1
+      - libxss1
     override-build: |
       curl -L https://azuredatastudio-update.azurewebsites.net/latest/linux-x64/stable -o ads.tgz
       tar -xvf ads.tgz
       mv ./azuredatastudio-linux-x64 /root/azure_data_studio
       rm -f ./ads.tgz
-
-      # Copy Gui Files
-      cp static/azure-data-studio.png /root/azure_data_studio/
-      cp static/azure.data.studio.desktop /root/azure_data_studio/
     organize:
       /root/azure_data_studio: _ads
 
 apps:
   azuredatastudio:
     command: desktop-launch _ads/bin/azuredatastudio
-    desktop: _ads/azure.data.studio.desktop
+    desktop: ${SNAP}/meta/gui/azure.data.studio.desktop
     plugs:
       - desktop
       - desktop-legacy

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Azure Data Studio
 Comment=Azure Data Studio
-Icon=${SNAP}/azure-data-studio.png
+Icon=${SNAP}/meta/gui/azure-data-studio.png
 Exec=azuredatastudio
 Type=Application
 Terminal=false

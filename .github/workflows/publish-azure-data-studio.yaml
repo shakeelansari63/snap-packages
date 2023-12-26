@@ -14,12 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Rename AzureDataStudio to Snapcraft.yaml
-        run: mv azure-data-studio.yaml snapcraft.yaml
-
       - name: Build snap
         uses: snapcore/action-build@v1
         id: build
+        with:
+          path: azure-data-studio
 
       - name: Release snap
         uses: snapcore/action-publish@v1
