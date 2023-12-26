@@ -23,12 +23,16 @@ parts:
       - curl
       - tree
     source: .
+    stage-packages:
+      - libx11-6
+      - libxcomposite-dev
+      - libxdamage1
+      - libxrandr2
     override-build: |
       curl -L https://azuredatastudio-update.azurewebsites.net/latest/linux-x64/stable -o ads.tgz
       tar -xvf ads.tgz
       mv ./azuredatastudio-linux-x64 /root/azure_data_studio
       rm -f ./ads.tgz
-      tree /root/azure_data_studio
 
       # Copy Gui Files
       cp static/azure-data-studio.png /root/azure_data_studio/
