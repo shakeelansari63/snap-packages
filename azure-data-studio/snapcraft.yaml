@@ -34,7 +34,7 @@ parts:
       - libxss1
     override-build: |
       curl -L https://azuredatastudio-update.azurewebsites.net/latest/linux-x64/stable -o ads.tgz
-      tar -xvf ads.tgz
+      tar -xf ads.tgz
       mv ./azuredatastudio-linux-x64 /root/azure_data_studio
       rm -f ./ads.tgz
     organize:

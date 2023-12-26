@@ -4,7 +4,7 @@ on:
     branches: 
       - 'main'
     paths: 
-      - variety.yaml
+      - 'variety/**'
 
 jobs:
   build:

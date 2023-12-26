@@ -4,7 +4,7 @@ on:
     branches: 
       - 'main'
     paths: 
-      - azure-data-studio.yaml
+      - 'azure-data-studio/**'
 
 jobs:
   build:
