@@ -36,6 +36,8 @@ apps:
   azuredatastudio:
     command: _ads/bin/azuredatastudio
     plugs:
+      - desktop
+      - desktop-legacy
       - network
       - network-bind
       - home
