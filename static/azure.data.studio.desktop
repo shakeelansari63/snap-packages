@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Azure Data Studio
+Comment=Azure Data Studio
+Icon=${SNAP}/meta/gui/azure-data-studio.png
+Exec=azuredatastudio
+Type=Application
+Terminal=false
+Keywords=Data;Sql;IDE
+Categories=Development;

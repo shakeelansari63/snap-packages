@@ -29,12 +29,17 @@ parts:
       mv ./azuredatastudio-linux-x64 /root/azure_data_studio
       rm -f ./ads.tgz
       tree /root/azure_data_studio
+
+      # Copy Gui Files
+      cp static/azure-data-studio.png snap/gui/
+      cp static/azure.data.studio.desktop snap/gui/
     organize:
       /root/azure_data_studio: _ads
 
 apps:
   azuredatastudio:
-    command: _ads/bin/azuredatastudio
+    command: desktop-launch _ads/bin/azuredatastudio
+    desktop: ${SNAP}/meta/gui/azure.data.studio.desktop
     plugs:
       - desktop
       - desktop-legacy
