@@ -11,7 +11,7 @@ description: |
   It's built for data professionals who use SQL Server and Azure databases on-premises or in multicloud environments.
 
 base: core22
-grade: devel
+grade: stable
 confinement: classic
 compression: lzo
 
