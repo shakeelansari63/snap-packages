@@ -63,7 +63,10 @@ parts:
       rm -rf /root/azure_data_studio
       mv ./azuredatastudio-linux-x64 /root/azure_data_studio
       rm -f ./ads.tgz
-      pwd
+      
+
+      # Fix Permission
+      chmod 755 /root/azure_data_studio/chrome-sandbox
 
       # Copy Icon and Desktop File
       cp $SNAPCRAFT_PROJECT_DIR/static/azuredatastudio.* /root/azure_data_studio/
