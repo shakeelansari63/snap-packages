@@ -67,13 +67,13 @@ apps:
     plugs:
       - desktop
       - desktop-legacy
-      - desktop-launch
       - wayland
       - x11
       - browser-support
       - network
       - network-bind
       - opengl
+      - home
 
 lint:
   ignore:
