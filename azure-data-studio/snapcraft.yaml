@@ -27,31 +27,7 @@ parts:
     stage-packages:
       - libxkbfile-dev
       - libssl3
-      - libxcomposite-dev
-      - libxdamage1
-      - libxext6
-      - libxfixes3
-      - libxrandr2
-      - libasound2
-      - libatk1.0-0
-      - libatk-bridge2.0-0
-      - libatspi2.0-0
-      - libcairo2
-      - libcups2
-      - libgbm1
-      - libgtk-3-0
-      - libnspr4
-      - libnss3
-      - libpango-1.0-0
-      - libxkbcommon-x11-0
-      - libcurl4
-      - libldap-2.5-0
-      - libnghttp2-14
-      - libpsl5
-      - librtmp1
-      - libsasl2-2
-      - liblttng-ust1
-      - libsecret-1-0
+      - git
 
     override-build: |
       # Default
@@ -63,7 +39,6 @@ parts:
       rm -rf /root/azure_data_studio
       mv ./azuredatastudio-linux-x64 /root/azure_data_studio
       rm -f ./ads.tgz
-      
 
       # Fix Permission
       chmod 755 /root/azure_data_studio/chrome-sandbox
@@ -86,11 +61,13 @@ parts:
 
 apps:
   azuredatastudio:
-    command: _ads/bin/azuredatastudio
+    extensions: ["gnome"]
+    command: _ads/bin/azuredatastudio --no-sandbox
     desktop: _ads/azuredatastudio.desktop
     plugs:
       - desktop
       - desktop-legacy
+      - desktop-launch
       - wayland
       - x11
       - browser-support

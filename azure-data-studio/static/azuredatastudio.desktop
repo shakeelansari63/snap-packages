@@ -2,7 +2,7 @@
 Name=Azure Data Studio
 Comment=Azure Data Studio
 Icon=${SNAP}/_ads/azuredatastudio.png
-Exec=azuredatastudio
+Exec=azuredatastudio --no-sandbox
 Type=Application
 Terminal=false
 Keywords=Data;Sql;IDE
