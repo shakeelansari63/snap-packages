@@ -1,5 +1,5 @@
 name: azuredatastudio
-version: "1.47.0-beta1"
+version: "1.47.0"
 license: MIT
 contact: https://github.com/shakeelansari63/snap-packages
 website: https://azure.microsoft.com/en-in/products/data-studio
@@ -12,7 +12,7 @@ description: |
 
 base: core22
 grade: stable
-confinement: classic
+confinement: strict
 compression: lzo
 
 parts:
@@ -27,6 +27,31 @@ parts:
     stage-packages:
       - libxkbfile-dev
       - libssl3
+      - libxcomposite-dev
+      - libxdamage1
+      - libxext6
+      - libxfixes3
+      - libxrandr2
+      - libasound2
+      - libatk1.0-0
+      - libatk-bridge2.0-0
+      - libatspi2.0-0
+      - libcairo2
+      - libcups2
+      - libgbm1
+      - libgtk-3-0
+      - libnspr4
+      - libnss3
+      - libpango-1.0-0
+      - libxkbcommon-x11-0
+      - libcurl4
+      - libldap-2.5-0
+      - libnghttp2-14
+      - libpsl5
+      - librtmp1
+      - libsasl2-2
+      - liblttng-ust1
+      - libsecret-1-0
 
     override-build: |
       # Default
