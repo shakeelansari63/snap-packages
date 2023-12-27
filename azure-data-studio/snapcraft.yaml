@@ -1,5 +1,5 @@
 name: azuredatastudio
-version: "1.47.0"
+version: "1.47.0-beta1"
 license: MIT
 contact: https://github.com/shakeelansari63/snap-packages
 website: https://azure.microsoft.com/en-in/products/data-studio
@@ -12,7 +12,8 @@ description: |
 
 base: core22
 grade: devel
-confinement: strict
+confinement: classic
+compression: lzo
 
 parts:
   azuredatastudio:
@@ -24,29 +25,53 @@ parts:
       - tree
     source: .
     stage-packages:
-      - libx11-6
-      - libxcomposite-dev
-      - libxdamage1
-      - libxrandr2
-      - libxext6
-      - libxft2
-      - libxrender1
-      - libxss1 
+      - libxkbfile-dev
+      - libssl3
+
     override-build: |
+      # Default
+      craftctl default
+
+      # Download and add azuredatastudio
       curl -L https://azuredatastudio-update.azurewebsites.net/latest/linux-x64/stable -o ads.tgz
       tar -xf ads.tgz
+      rm -rf /root/azure_data_studio
       mv ./azuredatastudio-linux-x64 /root/azure_data_studio
       rm -f ./ads.tgz
+      pwd
+
+      # Copy Icon and Desktop File
+      cp $SNAPCRAFT_PROJECT_DIR/static/azuredatastudio.* /root/azure_data_studio/
+
+    override-stage: |
+      # Stage
+      snapcraftctl stage
+
+      # Symblink libssl and libcrypto
+      cd /usr/lib/x86_64-linux-gnu
+      rm -rf libcrypto.so.10 libssl.so.10
+      ln -s libcrypto.so.3 libcrypto.so.10
+      ln -s libssl.so.3 libssl.so.10
+
     organize:
       /root/azure_data_studio: _ads
 
 apps:
   azuredatastudio:
-    command: desktop-launch _ads/bin/azuredatastudio
-    desktop: $SNAP/meta/gui/azure.data.studio.desktop
+    command: _ads/bin/azuredatastudio
+    desktop: _ads/azuredatastudio.desktop
     plugs:
       - desktop
       - desktop-legacy
+      - wayland
+      - x11
+      - browser-support
       - network
       - network-bind
+      - opengl
       - home
+
+lint:
+  ignore:
+    - library:
+      - usr/lib/x86_64-linux-gnu/**.so*
