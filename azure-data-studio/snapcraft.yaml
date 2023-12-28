@@ -1,6 +1,7 @@
 name: azuredatastudio
 version: "1.47.0"
 license: MIT
+title: Azure Data Studio
 contact: https://github.com/shakeelansari63/snap-packages
 website: https://azure.microsoft.com/en-in/products/data-studio
 summary: A unified tooling experience for data professionals
