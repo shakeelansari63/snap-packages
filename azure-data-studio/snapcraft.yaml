@@ -11,6 +11,8 @@ description: |
   Designed to focus on the functionality data platform developers use the most, Azure Data Studio offers additional experiences available as optional extensions. 
   It's built for data professionals who use SQL Server and Azure databases on-premises or in multicloud environments.
 
+  ** Note: This is an un-offocial distrubution of Azure Data Studio. **
+
 base: core22
 grade: stable
 confinement: strict
