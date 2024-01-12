@@ -52,6 +52,14 @@ parts:
       - azure-cli
 
 apps:
+  azcli:
+    command: usr/bin/az
+    plugs:
+      - network
+      - browser-support
+      - network-bind
+      - home
+
   az:
     command: usr/bin/az
     plugs:
