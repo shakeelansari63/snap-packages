@@ -11,12 +11,12 @@ architectures:
   - amd64
 description: |
   az-cli: The Azure command-line interface (Azure CLI) is a set of commands used to create and manage Azure resources. 
-  The Azure CLI is available across Azure services and is designed to get you working quickly with Azure, with an emphasis on automation.
-  ** Use AzCli using `azcli.az` command
-
+  The Azure CLI is available across Azure services and is designed to get you working quickly with Azure, with an emphasis on automation.  
+  ** Use AzCli using `azcli.az` or just `azcli` command.  
+    
   azcopy: AzCopy is a command-line utility that you can use to copy blobs or files to or from a storage account. 
-  ** Use AzCopy using `azcli.azcopy` command
-
+  ** Use AzCopy using `azcli.azcopy` or just `azcopy` command.  
+    
   ** Note: This is an un-offocial distrubution of Azure CLI and AzCopy binaries. **
 
 base: core22
