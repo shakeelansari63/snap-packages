@@ -1,5 +1,5 @@
 name: azcli
-version: "2.55.0+v10"
+version: "2.59.0+v10"
 license: MIT
 contact: https://github.com/shakeelansari63/snap-packages
 issues: https://github.com/Azure/azure-cli/issues
