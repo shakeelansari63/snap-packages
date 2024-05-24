@@ -10,56 +10,18 @@ description: |
 architectures:
   - amd64
 base: core22
-grade: devel
-confinement: strict
+grade: stable
+confinement: classic
 
 parts:
-  variety:
+  pyenv:
     plugin: dump
-    build-packages:
-      - curl
-      - tree
-      - git
-    stage-packages:
-      - build-essential
-      - libssl-dev
-      - zlib1g-dev
-      - libbz2-dev
-      - libreadline-dev
-      - libsqlite3-dev
-      - libdigest-sha-perl
-      - perl
-      - curl
-      - libncursesw5-dev
-      - xz-utils
-      - tk-dev
-      - libxml2-dev
-      - libxmlsec1-dev
-      - libffi-dev
-      - liblzma-dev
-      - git
-      - gcc
-      - llvm
-    source: .
-    override-build: |
-      curl https://pyenv.run | bash
-      echo """[safe]
-        directory = *
-      """ > /root/.pyenv/.gitconfig
-      tree /root/.pyenv
-
-    organize:
-      /root/.pyenv: _pyenv
+    source: https://github.com/pyenv/pyenv.git
 
 apps:
   pyenv:
-    command: _pyenv/bin/pyenv
+    command: bin/pyenv
     plugs:
       - network
       - network-bind
       - home
-
-layout:
-  /etc/gitconfig: 
-    bind-file: $SNAP/_pyenv/.gitconfig
-
