@@ -9,7 +9,7 @@ summary: Bun is a fast JavaScript toolkit, runtime and package manager
 architectures:
   - amd64
 description: |
-  Develop, test, run, and bundle JavaScript & TypeScript projects—all with Bun.
+  Develop, test, run, and bundle JavaScript & TypeScript projects—all with Bun. 
   Bun is an all-in-one JavaScript runtime & toolkit designed for speed, complete with a bundler, test runner, and Node.js-compatible package manager.
 
 base: core22
