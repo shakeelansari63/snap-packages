@@ -1,5 +1,5 @@
 name: bun-js
-version: "1.1.38"
+version: "1.1.39"
 license: MIT
 contact: https://github.com/shakeelansari63/snap-packages
 issues: https://github.com/oven-sh/bun/issues
@@ -11,7 +11,7 @@ architectures:
 description: |
   Develop, test, run, and bundle JavaScript & TypeScript projects—all with Bun. 
   Bun is an all-in-one JavaScript runtime & toolkit designed for speed, complete with a bundler, test runner, and Node.js-compatible package manager.
-  **Note: This is an un-offocial distrubution of Bun binaries.**
+  **Note: This is an unofficial distribution of Bun.**
 
 base: core22
 grade: stable
