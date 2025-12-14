@@ -33,6 +33,7 @@ parts:
       curl https://get.sdkman.io > install.sh
       chmod +x install.sh
       ./install.sh
+      tree ./
       echo -e '''#!/bin/bash
       export SDKMAN_DIR="$SNAP/_sdkman"
       export SDKMAN_CANDIDATES_DIR="$HOME/candidates"
