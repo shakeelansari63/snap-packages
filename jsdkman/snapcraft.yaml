@@ -1,5 +1,5 @@
 name: jsdkman
-version: "0.7.14-b1"
+version: "0.7.14-b2"
 license: MIT
 contact: https://github.com/shakeelansari63/snap-packages
 issues: https://github.com/shakeelansari63/snap-packages/issues
@@ -33,7 +33,7 @@ parts:
       curl https://get.sdkman.io > install.sh
       chmod +x install.sh
       ./install.sh
-      echo -e '''source "$SNAP/_sdkman/bin/sdkman-init.sh"\nSDKMAN_DIR="$SNAP/_sdkman" SDKMAN_CANDIDATES_DIR="$HOME/candidates" sdk $@''' > /root/.sdkman/bin/sdk.sh
+      echo -e '''#!/bin/bash\nsource "$SNAP/_sdkman/bin/sdkman-init.sh"\nSDKMAN_DIR="$SNAP/_sdkman" SDKMAN_CANDIDATES_DIR="$HOME/candidates" sdk $@''' > /root/.sdkman/bin/sdk.sh
       chmod a+x /root/.sdkman/bin/sdk.sh
       tree /root/.sdkman
     organize:
