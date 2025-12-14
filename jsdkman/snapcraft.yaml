@@ -21,7 +21,7 @@ grade: stable
 confinement: strict
 
 parts:
-  bunjs:
+  sdkman:
     plugin: dump
     build-packages:
       - unzip
@@ -33,9 +33,8 @@ parts:
       curl https://get.sdkman.io > install.sh
       chmod +x install.sh
       ./install.sh
-      echo '''source "$SNAP/_sdkman/bin/sdkman-init.sh"
-      SDKMAN_DIR="$SNAP/_sdkman" SDKMAN_CANDIDATES_DIR="$HOME/candidates" sdk $@''' > /root/.skdman/bin/sdk.sh
-      chmod a+x /root/.skdman/bin/sdk.sh
+      echo -e '''source "$SNAP/_sdkman/bin/sdkman-init.sh"\nSDKMAN_DIR="$SNAP/_sdkman" SDKMAN_CANDIDATES_DIR="$HOME/candidates" sdk $@''' > /root/.sdkman/bin/sdk.sh
+      chmod a+x /root/.sdkman/bin/sdk.sh
       tree /root/.sdkman
     organize:
       /root/.sdkman: _sdkman
