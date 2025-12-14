@@ -36,11 +36,11 @@ parts:
       tree /root/.sdkman
     organize:
       /root/.sdkman: _sdkman
-      "exec.sh": _sdkman/bin/exec.sh
+      "exec.sh": _sdkexec/sdk.sh
 
 apps:
   sdk:
-    command: _sdkman/bin/exec.sh
+    command: _sdkexec/sdk.sh
     plugs:
       - network
       - network-bind
