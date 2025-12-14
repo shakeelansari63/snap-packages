@@ -1,0 +1,47 @@
+name: jsdkman
+version: "0.7.14-b1"
+license: MIT
+contact: https://github.com/shakeelansari63/snap-packages
+issues: https://github.com/shakeelansari63/snap-packages/issues
+source-code: https://github.com/sdkman/sdkman-cli-native
+website: https://sdkman.io/
+summary: The Software Development Kit Manager
+architectures:
+  - amd64
+description: |
+  Meet SDKMAN! – your reliable companion for effortlessly managing multiple Software Development Kits on Unix systems.
+  Imagine having different versions of SDKs and needing a stress-free way to switch between them.
+  SDKMAN! steps in with its easy-to-use Command Line Interface (CLI) and API.
+  Formerly known as GVM, the Groovy enVironment Manager, SDKMAN! draws inspiration from familiar tools like apt, pip, RVM, and rbenv and even Git.
+  Think of it as your helpful toolkit friend, ready to streamline SDK management for you. 🛠️
+  **Note: This is an unofficial distribution of SDKMAN now renamed as jSDKMAN.**
+
+base: core22
+grade: stable
+confinement: strict
+
+parts:
+  bunjs:
+    plugin: dump
+    build-packages:
+      - unzip
+      - zip
+      - curl
+      - tree
+    source: .
+    override-build: |
+      curl https://get.sdkman.io > install.sh
+      chmod +x install.sh
+      ./install.sh
+      tree /root/.sdkman
+    organize:
+      /root/.sdkman: _sdkman
+      "exec.sh": _sdkman/bin/exec.sh
+
+apps:
+  sdk:
+    command: _sdkman/bin/exec.sh
+    plugs:
+      - network
+      - network-bind
+      - home
