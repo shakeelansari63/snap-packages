@@ -33,15 +33,15 @@ parts:
       curl https://get.sdkman.io > install.sh
       chmod +x install.sh
       ./install.sh
+      cp exec.sh /root/.skdman/bin/sdk.sh
+      chmod a+x /root/.skdman/bin/sdk.sh
       tree /root/.sdkman
-      chmod a+x exec.sh
     organize:
       /root/.sdkman: _sdkman
-      "exec.sh": _sdkexec/sdk.sh
 
 apps:
   sdk:
-    command: _sdkexec/sdk.sh
+    command: _sdkman/bin/sdk.sh
     plugs:
       - network
       - network-bind
