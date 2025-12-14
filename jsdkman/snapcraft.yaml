@@ -34,13 +34,14 @@ parts:
       chmod +x install.sh
       ./install.sh
       tree /root/.sdkman
+      chmod a+x exec.sh
     organize:
       /root/.sdkman: _sdkman
       "exec.sh": _sdkexec/sdk.sh
 
 apps:
   sdk:
-    command: sh _sdkexec/sdk.sh
+    command: _sdkexec/sdk.sh
     plugs:
       - network
       - network-bind
