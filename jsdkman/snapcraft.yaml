@@ -1,5 +1,5 @@
 name: jsdkman
-version: "0.7.14-b3"
+version: "0.7.14-b4"
 license: MIT
 contact: https://github.com/shakeelansari63/snap-packages
 issues: https://github.com/shakeelansari63/snap-packages/issues
@@ -28,17 +28,14 @@ parts:
       - zip
       - curl
       - tree
+    stage-packages:
+      - curl
     source: .
     override-build: |
       curl https://get.sdkman.io > install.sh
       chmod +x install.sh
       ./install.sh
-      tree ./
-      echo -e '''#!/bin/bash
-      export SDKMAN_DIR="$SNAP/_sdkman"
-      export SDKMAN_CANDIDATES_DIR="$HOME/candidates"
-      source "$SNAP/_sdkman/bin/sdkman-init.sh"
-      sdk $@''' > /root/.sdkman/bin/sdk.sh
+      cp ./exec.sh /root/.sdkman/bin/sdk.sh
       chmod a+x /root/.sdkman/bin/sdk.sh
       tree /root/.sdkman
     organize:
