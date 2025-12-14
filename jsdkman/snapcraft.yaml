@@ -40,7 +40,7 @@ parts:
 
 apps:
   sdk:
-    command: _sdkexec/sdk.sh
+    command: sh _sdkexec/sdk.sh
     plugs:
       - network
       - network-bind
