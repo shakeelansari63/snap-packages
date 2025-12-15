@@ -38,7 +38,9 @@ parts:
       cp ./exec.sh /root/.sdkman/bin/sdk.sh
       chmod a+x /root/.sdkman/bin/sdk.sh
       # More Customization of scripts
-      find /root/.sdkman -type f -name '*.sh' -exec sed 's#${SDKMAN_DIR}/tmp#${HOME}/tmp#g' {} \;
+      find /root/.sdkman -type f -name '*.sh' -exec sed -i 's#${SDKMAN_DIR}/tmp#${HOME}/tmp#g' {} \;
+      find /root/.sdkman -type f -name '*.sh' -exec sed -i 's#"$SDKMAN_DIR"/tmp#${HOME}/tmp#g' {} \;
+      find /root/.sdkman -type f -name '*.sh' -exec sed -i 's#$SDKMAN_DIR/tmp#${HOME}/tmp#g' {} \;
       tree /root/.sdkman
     organize:
       /root/.sdkman: _sdkman
