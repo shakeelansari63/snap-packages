@@ -1,5 +1,5 @@
 name: jsdkman
-version: "0.7.14-b9"
+version: "0.7.14-b10"
 license: MIT
 contact: https://github.com/shakeelansari63/snap-packages
 issues: https://github.com/shakeelansari63/snap-packages/issues
@@ -30,6 +30,8 @@ parts:
       - tree
     stage-packages:
       - curl
+      - zip
+      - unzip
     source: .
     override-build: |
       curl https://get.sdkman.io > install.sh
