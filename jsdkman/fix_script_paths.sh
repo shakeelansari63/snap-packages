@@ -7,6 +7,9 @@ then
 fi
 
 # Fix Paths
+find ${SRC_DIR} -type f -name '*.sh' -exec sed -i 's#${SDKMAN_DIR}/candidates#${SNAP_USER_COMMON}/candidates#g' {} \;
+find ${SRC_DIR} -type f -name '*.sh' -exec sed -i 's#"$SDKMAN_DIR"/candidates#${SNAP_USER_COMMON}/candidates#g' {} \;
+find ${SRC_DIR} -type f -name '*.sh' -exec sed -i 's#$SDKMAN_DIR/candidates#${SNAP_USER_COMMON}/candidates#g' {} \;
 find ${SRC_DIR} -type f -name '*.sh' -exec sed -i 's#${SDKMAN_DIR}/tmp#${SNAP_USER_COMMON}/tmp#g' {} \;
 find ${SRC_DIR} -type f -name '*.sh' -exec sed -i 's#"$SDKMAN_DIR"/tmp#${SNAP_USER_COMMON}/tmp#g' {} \;
 find ${SRC_DIR} -type f -name '*.sh' -exec sed -i 's#$SDKMAN_DIR/tmp#${SNAP_USER_COMMON}/tmp#g' {} \;
