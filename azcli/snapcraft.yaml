@@ -1,5 +1,5 @@
 name: azcli
-version: "2.67.0+v10"
+version: "2.81.0+v10"
 license: MIT
 contact: https://github.com/shakeelansari63/snap-packages
 issues: https://github.com/Azure/azure-cli/issues
@@ -10,13 +10,13 @@ summary: Azure Command-Line Interface (CLI) including AZCopy
 architectures:
   - amd64
 description: |
-  **_az-cli_**: The Azure command-line interface (Azure CLI) is a set of commands used to create and manage Azure resources. 
-  The Azure CLI is available across Azure services and is designed to get you working quickly with Azure, with an emphasis on automation.  
-  ** Use AzCli using `azcli.az` or just `azcli` command.  
-    
-  **_azcopy_**: AzCopy is a command-line utility that you can use to copy blobs or files to or from a storage account.   
-  ** Use AzCopy using `azcli.azcopy` or just `azcopy` command.  
-    
+  **_az-cli_**: The Azure command-line interface (Azure CLI) is a set of commands used to create and manage Azure resources.
+  The Azure CLI is available across Azure services and is designed to get you working quickly with Azure, with an emphasis on automation.
+  ** Use AzCli using `azcli.az` or just `azcli` command.
+
+  **_azcopy_**: AzCopy is a command-line utility that you can use to copy blobs or files to or from a storage account.
+  ** Use AzCopy using `azcli.azcopy` or just `azcopy` command.
+
   **Note: This is an un-offocial distrubution of Azure CLI and AzCopy binaries.**
 
 base: core22
@@ -37,7 +37,7 @@ parts:
     plugin: dump
     source: .
     override-build: |
-      # Add Az Copy 
+      # Add Az Copy
       curl -sL https://aka.ms/downloadazcopy-v10-linux -o azcli.tgz
       tar -xf azcli.tgz
       mkdir -p /root/.azcopy
@@ -67,7 +67,7 @@ apps:
       - browser-support
       - network-bind
       - home
-      
+
   azcopy:
     command: _azcp/azcopy
     plugs:
