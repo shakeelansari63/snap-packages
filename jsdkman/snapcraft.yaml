@@ -1,5 +1,5 @@
 name: jsdkman
-version: "0.7.14-b6"
+version: "0.7.14-b7"
 license: MIT
 contact: https://github.com/shakeelansari63/snap-packages
 issues: https://github.com/shakeelansari63/snap-packages/issues
@@ -41,6 +41,14 @@ parts:
       find /root/.sdkman -type f -name '*.sh' -exec sed -i 's#${SDKMAN_DIR}/tmp#${HOME}/tmp#g' {} \;
       find /root/.sdkman -type f -name '*.sh' -exec sed -i 's#"$SDKMAN_DIR"/tmp#${HOME}/tmp#g' {} \;
       find /root/.sdkman -type f -name '*.sh' -exec sed -i 's#$SDKMAN_DIR/tmp#${HOME}/tmp#g' {} \;
+      find /root/.sdkman -type f -name '*.sh' -exec sed -i 's#${SDKMAN_DIR}/var/delay_upgrade#${HOME}/var/delay_upgrade#g' {} \;
+      find /root/.sdkman -type f -name '*.sh' -exec sed -i 's#"${SDKMAN_DIR}"/var/delay_upgrade#${HOME}/var/delay_upgrade#g' {} \;
+      find /root/.sdkman -type f -name '*.sh' -exec sed -i 's#$SDKMAN_DIR/var/delay_upgrade#${HOME}/var/delay_upgrade#g' {} \;
+      find /root/.sdkman -type f -name '*.sh' -exec sed -i 's#${SDKMAN_DIR}/var/metadata#${HOME}/var/metadata#g' {} \;
+      find /root/.sdkman -type f -name '*.sh' -exec sed -i 's#"${SDKMAN_DIR}"/var/metadata#${HOME}/var/metadata#g' {} \;
+      find /root/.sdkman -type f -name '*.sh' -exec sed -i 's#$SDKMAN_DIR/var/metadata#${HOME}/var/metadata#g' {} \;
+      find /root/.sdkman -type f -name '*.sh' -exec sed -i '/sdkman_cleanup_dir="${SDKMAN_DIR}\/${folder}"/a\
+      [[ "${folder}" == "tmp" ]] || [[ "${folder}" == "var/metadata" ]] && sdkman_cleanup_dir="${HOME}/${folder}' {} \;
       tree /root/.sdkman
     organize:
       /root/.sdkman: _sdkman
