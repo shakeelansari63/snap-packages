@@ -1,5 +1,5 @@
 name: podman-io
-version: "0.0.1b1"
+version: "4.9.3-beta"
 license: Apache-2.0
 contact: https://github.com/shakeelansari63/snap-packages
 website: https://podman.io/
@@ -21,17 +21,24 @@ base: core24
 grade: devel
 confinement: strict
 
+environment:
+  XDG_RUNTIME_DIR: ${SNAP_USER_COMMON}/
+
 parts:
   podman:
     plugin: dump
     build-packages:
       - podman
+      - uidmap
+      - slirp4netns
     stage-packages:
       - podman
+      - uidmap
+      - slirp4netns
     source: .
 apps:
   podman:
-    command: podman
+    command: /usr/bin/podman
     plugs:
       - network
       - network-bind
