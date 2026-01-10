@@ -1,6 +1,6 @@
 name: podman-io
 version: "0.0.1b1"
-license: GPLv3
+license: Apache-2.0
 contact: https://github.com/shakeelansari63/snap-packages
 website: https://podman.io/
 summary: The best free & open source container tools
