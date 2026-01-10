@@ -1,0 +1,36 @@
+name: podman-io
+version: "0.0.1b1"
+license: GPLv3
+contact: https://github.com/shakeelansari63/snap-packages
+website: https://podman.io/
+summary: The best free & open source container tools
+description: |
+  **Podman**  \
+  Manage containers, pods, and images with Podman. \
+  Seamlessly work with containers and Kubernetes from your local environment.  \
+   \
+  **How to Run** \
+  `podman-io.podman --help` \
+   \
+  Want to use the `podman` command directly? run following command to create snap alias. \
+  `sudo snap alias podman-io.podman podman` \
+   \
+  **Note: This is an unofficial distribution of Podman.**
+
+base: core24
+grade: devel
+confinement: strict
+
+parts:
+  sdkman:
+    plugin: dump
+    build-packages:
+      - podman
+    stage-packages:
+      - podman
+apps:
+  podman:
+    plugs:
+      - network
+      - network-bind
+      - home
