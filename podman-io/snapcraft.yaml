@@ -1,5 +1,5 @@
 name: podman-io
-version: "4.9.3-beta"
+version: "4.9.3-beta1"
 license: Apache-2.0
 contact: https://github.com/shakeelansari63/snap-packages
 website: https://podman.io/
