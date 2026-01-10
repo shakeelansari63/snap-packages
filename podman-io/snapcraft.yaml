@@ -22,14 +22,16 @@ grade: devel
 confinement: strict
 
 parts:
-  sdkman:
+  podman:
     plugin: dump
     build-packages:
       - podman
     stage-packages:
       - podman
+    source: .
 apps:
   podman:
+    command: podman
     plugs:
       - network
       - network-bind
