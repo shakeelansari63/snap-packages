@@ -14,16 +14,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build snap
-        uses: snapcore/action-build@v1
-        id: build
-        with:
-          path: podman-io
+      # - name: Build snap
+      #   uses: snapcore/action-build@v1
+      #   id: build
+      #   with:
+      #     path: podman-io
 
-      - name: Release snap
-        uses: snapcore/action-publish@v1
-        env:
-          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_SNAP_STORE_LOGIN }}
-        with:
-          snap: ${{ steps.build.outputs.snap }}
-          release: edge
+      # - name: Release snap
+      #   uses: snapcore/action-publish@v1
+      #   env:
+      #     SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_SNAP_STORE_LOGIN }}
+      #   with:
+      #     snap: ${{ steps.build.outputs.snap }}
+      #     release: edge
