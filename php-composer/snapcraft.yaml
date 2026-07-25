@@ -59,12 +59,21 @@ parts:
       # Install composer
       php /tmp/composer-setup.php --install-dir=/usr/bin --filename=composer
 
+      # Extract PHP binary from Composer
+      PHP_BIN=$(composer --version | grep /usr/bin/php | grep -oP '(?<=\()[^)]*' | sed 's#/usr/bin/##g')
+      if [[ -n "/usr/bin/$PHP_BIN" ]]; then
+        echo "Found PHP binary: $PHP_BIN"
+        cd /usr/bin
+        ln -s $PHP_BIN php
+      fi
+
       # Check Installed versions
       php -v
       composer --version
+
 apps:
   php:
-    command: usr/bin/php
+    command: /usr/bin/php
     plugs:
       - network
       - network-bind
