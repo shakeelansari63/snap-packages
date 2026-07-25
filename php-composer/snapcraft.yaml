@@ -57,7 +57,7 @@ parts:
       fi
 
       # Install composer
-      php /tmp/composer-setup.php --install-dir=usr/bin --filename=composer
+      php /tmp/composer-setup.php --install-dir=/usr/bin --filename=composer
 
       # Check Installed versions
       php -v
@@ -70,7 +70,7 @@ apps:
       - network-bind
       - home
   composer:
-    command: usr/bin/composer
+    command: /usr/bin/composer
     plugs:
       - network
       - network-bind
