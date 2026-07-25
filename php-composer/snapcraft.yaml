@@ -30,12 +30,16 @@ parts:
     plugin: dump
     build-packages:
       - php-cli
+      - php-mysql
+      - php-pgsql
       - php-mbstring
       - git
       - unzip
       - curl
     stage-packages:
       - php-cli
+      - php-mysql
+      - php-pgsql
       - php-mbstring
       - git
       - unzip
@@ -54,15 +58,19 @@ parts:
 
       # Install composer
       php /tmp/composer-setup.php --install-dir=/usr/bin --filename=composer
+
+      # Check Installed versions
+      php -v
+      composer --version
 apps:
   php:
-    command: /usr/bin/php
+    command: usr/bin/php
     plugs:
       - network
       - network-bind
       - home
   composer:
-    command: /usr/bin/composer
+    command: usr/bin/composer
     plugs:
       - network
       - network-bind
