@@ -1,0 +1,64 @@
+name: php-composer
+version: "0.0.1"
+license: MIT
+contact: https://github.com/shakeelansari63/snap-packages
+website: https://getcomposer.org/
+summary: A Dependency Manager for PHP
+description: |
+  **PHP and Composer**  \
+  Manage PHP dependencies with Composer. \
+  Seamlessly work with PHP packages from your local environment.  \
+   \
+  **How to Run** \
+  `php-composer.composer --help` \
+   \
+  Want to use the `php` and `composer` commands directly? run following command to create snap alias. \
+  `sudo snap alias php-composer.php php` \
+  `sudo snap alias php-composer.composer composer` \
+   \
+  **Note: This is an unofficial distribution of PHP and Composer packaged together.**
+
+base: core24
+grade: devel
+confinement: strict
+
+environment:
+  XDG_RUNTIME_DIR: ${SNAP_USER_COMMON}/
+
+parts:
+  php-composer:
+    plugin: dump
+    build-packages:
+      - php-cli
+      - php-mbstring
+      - git
+      - unzip
+      - curl
+    stage-packages:
+      - php-cli
+      - php-mbstring
+      - git
+      - unzip
+      - curl
+    source: .
+    override-build: |
+      cd ~
+      curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
+      HASH=$(curl -sS https://getcomposer.org/installer.sig)
+      php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('/tmp/composer-setup.php'); } echo PHP_EOL;"
+
+      # Proceed with installation
+      php /tmp/composer-setup.php --install-dir=/usr/bin --filename=composer
+apps:
+  php:
+    command: /usr/bin/php
+    plugs:
+      - network
+      - network-bind
+      - home
+  composer:
+    command: /usr/bin/composer
+    plugs:
+      - network
+      - network-bind
+      - home
