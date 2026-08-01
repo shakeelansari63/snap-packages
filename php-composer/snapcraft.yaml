@@ -102,7 +102,37 @@ parts:
         ln -s $PHAR_BIN phar.phar
       fi
 
-      # Update PHP.ini
+      # Create Default PHP.ini
+      PHPINI_LOC=$CRAFT_PRIME$(php --ini | grep -i "php.ini" | cut -d'"' -f2 | head -1)
+      PHP_INI=$PHPINI_LOC/php.ini
+      echo "PHP.ini location: $PHP_INI"
+
+      if [[ ! -f $PHP_INI ]]; then
+        echo "No PHP.ini found, creating default..."
+
+        # Find PHP's Standard ini
+        find $CRAFT_PRIME/usr/lib/php -name php.ini-development -exec cp {} $PHP_INI \;
+      fi
+
+      # Update Extensions in PHP.ini
+      echo "extension=phar" >> $PHP_INI
+      echo "extension=mysqli" >> $PHP_INI
+      echo "extension=pdo_mysql" >> $PHP_INI
+      echo "extension=pgsql" >> $PHP_INI
+      echo "extension=pdo_pgsql" >> $PHP_INI
+      echo "extension=odbc" >> $PHP_INI
+      echo "extension=pdo_odbc" >> $PHP_INI
+      echo "extension=curl" >> $PHP_INI
+      echo "extension=xsl" >> $PHP_INI
+      echo "extension=zip" >> $PHP_INI
+      echo "extension=gd" >> $PHP_INI
+      echo "extension=mbstring" >> $PHP_INI
+      echo "extension=fileinfo" >> $PHP_INI
+      echo "extension=xml" >> $PHP_INI
+      echo "extension=ftp" >> $PHP_INI
+      echo "extension=gettext" >> $PHP_INI
+      echo "extension=bcmath" >> $PHP_INI
+      echo "extension=fpm" >> $PHP_INI
 
     organize:
       /root/comp: _comp
