@@ -63,11 +63,13 @@ parts:
       # Check Installed Composer versions
       /root/comp/composer --version
 
-    override-stage: |
-      # Default Stage task
+    override-prime: |
+      # Default prime task
       craftctl default
 
       # For Debug
+      pwd
+      ls -lart .
       ls -lart /
       ls -lart /usr/bin
       ls -lart /root
