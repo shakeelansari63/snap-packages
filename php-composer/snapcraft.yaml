@@ -60,7 +60,7 @@ parts:
       php /tmp/composer-setup.php --install-dir=/usr/bin --filename=composer
 
       # Extract PHP binary from Composer
-      PHP_BIN=$(composer --version | grep /usr/bin/php | grep -oP '(?<=\()[^)]*' | sed 's#/usr/bin/##g')
+      PHP_BIN=$(composer --version 2>&1 | grep /usr/bin/php | grep -oP '(?<=\()[^)]*' | sed 's#/usr/bin/##g')
       if [[ -n "/usr/bin/$PHP_BIN" ]]; then
         echo "Found PHP binary: $PHP_BIN"
         cd /usr/bin
