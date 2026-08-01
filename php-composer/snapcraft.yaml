@@ -61,12 +61,13 @@ parts:
       php /tmp/composer-setup.php --install-dir=/root/comp --filename=composer
 
       # Extract PHP binary from Composer
-      # PHP_BIN=$(composer --version 2>&1 | grep /usr/bin/php | grep -oP '(?<=\()[^)]*' | sed 's#/usr/bin/##g')
-      # if [[ -n "/usr/bin/$PHP_BIN" ]]; then
-      #   echo "Found PHP binary: $PHP_BIN"
-      #   cd /usr/bin
-      #   ln -s $PHP_BIN php
-      # fi
+      PHP_BIN=$(composer --version 2>&1 | grep /usr/bin/php | grep -oP '(?<=\()[^)]*' | sed 's#/usr/bin/##g')
+      if [[ -n "/usr/bin/$PHP_BIN" ]]; then
+        echo "Found PHP binary: $PHP_BIN"
+        cd /usr/bin
+        rm -rf php
+        ln -s $PHP_BIN php
+      fi
 
       # Check Installed versions
       php -v
