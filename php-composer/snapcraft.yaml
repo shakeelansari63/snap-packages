@@ -73,10 +73,11 @@ parts:
       /root/comp/composer --version
     organize:
       /root/comp: _comp
+      /usr/bin/php: _php
 
 apps:
   php:
-    command: usr/bin/php
+    command: _php
     plugs:
       - network
       - network-bind
