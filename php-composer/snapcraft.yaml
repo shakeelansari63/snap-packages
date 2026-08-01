@@ -57,29 +57,32 @@ parts:
       fi
 
       # Install composer
-      php /tmp/composer-setup.php --install-dir=/usr/bin --filename=composer
+      mkdir -p /root/comp
+      php /tmp/composer-setup.php --install-dir=/root/comp --filename=composer
 
       # Extract PHP binary from Composer
-      PHP_BIN=$(composer --version 2>&1 | grep /usr/bin/php | grep -oP '(?<=\()[^)]*' | sed 's#/usr/bin/##g')
-      if [[ -n "/usr/bin/$PHP_BIN" ]]; then
-        echo "Found PHP binary: $PHP_BIN"
-        cd /usr/bin
-        ln -s $PHP_BIN php
-      fi
+      # PHP_BIN=$(composer --version 2>&1 | grep /usr/bin/php | grep -oP '(?<=\()[^)]*' | sed 's#/usr/bin/##g')
+      # if [[ -n "/usr/bin/$PHP_BIN" ]]; then
+      #   echo "Found PHP binary: $PHP_BIN"
+      #   cd /usr/bin
+      #   ln -s $PHP_BIN php
+      # fi
 
       # Check Installed versions
       php -v
       composer --version
+    organize:
+      /root/comp: _comp
 
 apps:
   php:
-    command: /usr/bin/php
+    command: usr/bin/php
     plugs:
       - network
       - network-bind
       - home
   composer:
-    command: /usr/bin/composer
+    command: _comp/composer
     plugs:
       - network
       - network-bind
