@@ -29,19 +29,26 @@ parts:
   php-composer:
     plugin: dump
     build-packages:
+      - php
+      - php-common
       - php-cli
-      - php-phar
-      - php-mysql
-      - php-pgsql
-      - php-mbstring
       - git
       - unzip
       - curl
     stage-packages:
+      - php
+      - php-common
       - php-cli
-      - php-phar
       - php-mysql
       - php-pgsql
+      - php-curl
+      - php-xml
+      - php-zip
+      - php-fpm
+      - php-bcmath
+      - php-odbc
+      - php-gd
+      - php-phar
       - php-mbstring
       - git
       - unzip
@@ -94,6 +101,8 @@ parts:
         ln -s $PHAR_BIN php.phar
         ln -s $PHAR_BIN phar.phar
       fi
+
+      # Update PHP.ini
 
     organize:
       /root/comp: _comp
