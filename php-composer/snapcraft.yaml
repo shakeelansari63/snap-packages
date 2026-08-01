@@ -70,7 +70,7 @@ parts:
 
       # Check Installed versions
       php -v
-      composer --version
+      /root/comp/composer --version
     organize:
       /root/comp: _comp
 
