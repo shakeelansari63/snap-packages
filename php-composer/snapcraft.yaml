@@ -1,5 +1,5 @@
 name: php-composer
-version: "0.0.1b1"
+version: "0.0.1b2"
 license: MIT
 contact: https://github.com/shakeelansari63/snap-packages
 website: https://getcomposer.org/
@@ -63,7 +63,12 @@ parts:
       # Check Installed Composer versions
       /root/comp/composer --version
 
-      # Extract PHP binary from Composer
+    override-stage: |
+      # Default Stage task
+      craftctl default
+
+      # Symlink PHP binary
+      ## Extract PHP binary from Composer
       PHP_BIN=$(/root/comp/composer --version 2>&1 | grep /usr/bin/php | grep -oP '(?<=\()[^)]*' | sed 's#/usr/bin/##g')
 
       # Check if PHP binary is found and create symlink
@@ -71,15 +76,15 @@ parts:
         echo "Found PHP binary: $PHP_BIN"
         cd /usr/bin
         rm -rf php
-        ln -s usr/bin/$PHP_BIN php
+        ln -s $PHP_BIN php
       fi
+
     organize:
       /root/comp: _comp
-      /usr/bin/php: _php
 
 apps:
   php:
-    command: _php
+    command: usr/bin/php
     plugs:
       - network
       - network-bind
