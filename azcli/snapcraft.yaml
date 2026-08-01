@@ -7,8 +7,6 @@ source-code: https://github.com/Azure/azure-cli
 website: https://learn.microsoft.com/en-us/cli/azure/
 title: Azure CLI and AZCopy
 summary: Azure Command-Line Interface (CLI) including AZCopy
-architectures:
-  - amd64
 description: |
   **_az-cli_**: The Azure command-line interface (Azure CLI) is a set of commands used to create and manage Azure resources.
   The Azure CLI is available across Azure services and is designed to get you working quickly with Azure, with an emphasis on automation.
@@ -19,7 +17,7 @@ description: |
 
   **Note: This is an un-offocial distrubution of Azure CLI and AzCopy binaries.**
 
-base: core22
+base: core24
 grade: stable
 confinement: strict
 
@@ -29,7 +27,7 @@ package-repositories:
     components: [main]
     key-server: https://packages.microsoft.com/keys/microsoft.asc
     key-id: BC528686B50D79E339D3721CEB3E94ADBE1229CF
-    suites: [jammy]
+    suites: [noble]
     url: https://packages.microsoft.com/repos/azure-cli/
 
 parts:

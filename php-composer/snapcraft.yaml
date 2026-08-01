@@ -18,7 +18,7 @@ description: |
    \
   **Note: This is an unofficial distribution of PHP and Composer packaged together.**
 
-base: core24
+base: core26
 grade: devel
 confinement: strict
 
@@ -30,6 +30,7 @@ parts:
     plugin: dump
     build-packages:
       - php-cli
+      - php-phar
       - php-mysql
       - php-pgsql
       - php-mbstring
@@ -38,6 +39,7 @@ parts:
       - curl
     stage-packages:
       - php-cli
+      - php-phar
       - php-mysql
       - php-pgsql
       - php-mbstring
