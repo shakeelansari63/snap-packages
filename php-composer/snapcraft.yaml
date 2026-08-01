@@ -63,25 +63,21 @@ parts:
       # Check Installed Composer versions
       /root/comp/composer --version
 
-    override-stage: |
-      # Default Stage task
+    override-prime: |
+      # Default Prime task
       craftctl default
 
       # For Debug
-      pwd
-      ls -lart .
-      ls -lart /
-      ls -lart /usr/bin
-      ls -lart /root
+      ls -lart $CRAFT_PRIME/
 
       # Symlink PHP binary
       ## Extract PHP binary from Composer
-      PHP_BIN=$(_comp/composer --version 2>&1 | grep /usr/bin/php | grep -oP '(?<=\()[^)]*' | sed 's#/usr/bin/##g')
+      PHP_BIN=$($CRAFT_PRIME/_comp/composer --version 2>&1 | grep /usr/bin/php | grep -oP '(?<=\()[^)]*' | sed 's#/usr/bin/##g')
 
       # Check if PHP binary is found and create symlink
-      if [[ -n "usr/bin/$PHP_BIN" ]]; then
+      if [[ -n "$CRAFT_PRIME/usr/bin/$PHP_BIN" ]]; then
         echo "Found PHP binary: $PHP_BIN"
-        cd usr/bin
+        cd $CRAFT_PRIME/usr/bin
         rm -rf php
         ln -s $PHP_BIN php
       fi
