@@ -75,6 +75,7 @@ parts:
       # Symlink PHP binary
       ## Extract PHP binary from Composer
       PHP_BIN=$($CRAFT_PRIME/_comp/composer --version 2>&1 | grep /usr/bin/php | grep -oP '(?<=\()[^)]*' | sed 's#/usr/bin/##g')
+      PHAR_BIN=$(echo $PHP_BIN | sed 's#php#phar#g')
 
       # Check if PHP binary is found and create symlink
       if [[ -n "$CRAFT_PRIME/usr/bin/$PHP_BIN" ]]; then
@@ -82,6 +83,16 @@ parts:
         cd $CRAFT_PRIME/usr/bin
         rm -rf php
         ln -s $PHP_BIN php
+      fi
+
+      # Check if PHP Phar binary is found and create symlink
+      if [[ -n "$CRAFT_PRIME/usr/bin/$PHAR_BIN" ]]; then
+        echo "Found PHP Phar binary: $PHAR_BIN"
+        cd $CRAFT_PRIME/usr/bin
+        rm -rf phar php.phar phar.phar
+        ln -s $PHAR_BIN phar
+        ln -s $PHAR_BIN php.phar
+        ln -s $PHAR_BIN phar.phar
       fi
 
     organize:
