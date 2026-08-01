@@ -66,11 +66,10 @@ parts:
         echo "Found PHP binary: $PHP_BIN"
         cd /usr/bin
         rm -rf php
-        ln -s $PHP_BIN php
+        ln -s usr/bin/$PHP_BIN php
       fi
 
-      # Check Installed versions
-      php -v
+      # Check Installed Composer versions
       /root/comp/composer --version
     organize:
       /root/comp: _comp
