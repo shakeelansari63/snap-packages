@@ -67,6 +67,11 @@ parts:
       # Default Stage task
       craftctl default
 
+      # For Debug
+      ls -lart /
+      ls -lart /usr/bin
+      ls -lart /root
+
       # Symlink PHP binary
       ## Extract PHP binary from Composer
       PHP_BIN=$(/root/comp/composer --version 2>&1 | grep /usr/bin/php | grep -oP '(?<=\()[^)]*' | sed 's#/usr/bin/##g')
